@@ -1,0 +1,28 @@
+PATH
+  remote: .
+  specs:
+    enterprise-ohai (0.0.0)
+      json
+      ohai
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    json (1.6.1)
+    mixlib-cli (1.2.2)
+    mixlib-config (1.1.2)
+    mixlib-log (1.3.0)
+    ohai (0.6.10)
+      mixlib-cli
+      mixlib-config
+      mixlib-log
+      systemu (~> 2.2.0)
+      yajl-ruby
+    systemu (2.2.0)
+    yajl-ruby (1.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  enterprise-ohai!
