@@ -1,4 +1,4 @@
-provides "swap"
+provides 'swap'
 
 swaps = Mash.new
 

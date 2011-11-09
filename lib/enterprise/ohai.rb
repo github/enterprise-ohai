@@ -1,7 +1,7 @@
 require 'ohai'
 require 'json'
 
-Ohai::Config[:plugin_path] << File.dirname(__FILE__) + '/enterprise/ohai/plugins'
+Ohai::Config[:plugin_path] << File.dirname(__FILE__) + '/ohai/plugins'
 
 module Enterprise
   module Ohai
@@ -13,12 +13,7 @@ module Enterprise
     def self.system_data
       system = ::Ohai::System.new
 
-      system.require_plugin('linux/block_device')
-      system.require_plugin('linux/filesystem')
-      system.require_plugin('linux/memory')
-      system.require_plugin('network')
-
-      system.require_plugin('swap')
+      system.all_plugins
 
       system.data
     end

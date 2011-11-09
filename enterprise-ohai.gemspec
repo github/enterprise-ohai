@@ -2,7 +2,7 @@ dir = File.dirname(__FILE__)
 
 Gem::Specification.new do |s|
   s.name    = 'enterprise-ohai'
-  s.version = '0.0.0'
+  s.version = '0.1.0'
   s.summary = s.description = 'Ohai plugins for enterprise.'
   s.authors = %w[GitHub]
 
