@@ -10,6 +10,10 @@ def disk_path(link)
   File.expand_path(File.join(dir, path))
 end
 
+def disk_size(path)
+  %x{fdisk -lu #{path} 2>&1}[%r{^Disk #{path}: (.*),}, 1]
+end
+
 disks = Mash.new
 
 by_path_root  = '/dev/disk/by-path'
@@ -43,6 +47,8 @@ end
 disks.keys.each do |device|
   disks[device].update(filesystem[device]) if filesystem[device]
   disks[device].update(:swap => true)      if swap[device]
+
+  disks[device].update(:size => disk_size(device))
 end
 
 disk disks
