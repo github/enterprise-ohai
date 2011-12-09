@@ -21,7 +21,7 @@ by_label_root = '/dev/disk/by-label'
 by_uuid_root  = '/dev/disk/by-uuid'
 
 %x{parted --list --script}.split("\n\n\n").each do |section|
-  path, headers, info = nil, nil, Mash.new
+  path, headers, partitions, info = nil, nil, [], Mash.new
 
   section.split("\n").each do |line|
     case line
@@ -37,9 +37,11 @@ by_uuid_root  = '/dev/disk/by-uuid'
         m.update(k => v)
       end
 
-      (info[:partitions] ||= []) << partition_info
+      partitions << partition_info
     end
   end
+
+  info[:partitions] = partitions
 
   (disks[path] ||= Mash.new).merge!(info)
 end
