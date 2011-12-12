@@ -25,6 +25,8 @@ by_uuid_root  = '/dev/disk/by-uuid'
 
   section.split("\n").each do |line|
     case line
+    when '' then break
+    when %r{^Error: (.*): } then path = $1
     when %r{^Model: (.*)$} then info[:model] = $1
     when %r{^Disk (.*): (.*)$} then path, info[:size] = $1, $2
     when %r{^Number\s+} then headers = line.split(/\s{2,}/).map {|h| h.downcase.gsub(/\W/, '_') }
