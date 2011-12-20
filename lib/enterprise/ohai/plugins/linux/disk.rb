@@ -2,6 +2,7 @@ provides 'disk'
 
 require_plugin 'linux::block_device'
 require_plugin 'linux::filesystem'
+require_plugin 'linux::swap'
 
 def disk_path(link)
   dir   = File.dirname(link)
