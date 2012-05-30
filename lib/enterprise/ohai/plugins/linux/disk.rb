@@ -78,6 +78,7 @@ end
 disks.keys.each do |device|
   disks[device].update(filesystem[device]) if filesystem[device]
   disks[device].update(:swap => true)      if swap[device]
+  disks[device][:size] ||= disk_size(device)
 end
 
 disk disks
