@@ -7,7 +7,7 @@ resolv_config = Mash.new
 
 if File.exist?(resolv_config_file)
   lines = File.readlines(resolv_config_file)
-  resolv_config[:name_servers] = lines.grep(/^nameserver #{ip}$/).map {|l| l[IP, 1] }
+  resolv_config[:name_servers] = lines.grep(/^nameserver #{ip}$/).map {|l| l[ip, 1] }
 end
 
 resolv resolv_config
